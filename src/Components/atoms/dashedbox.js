@@ -9,5 +9,5 @@ const DashedBox = (props) => {
         </div>
     </div>
     );
-}
+};
 export default DashedBox;

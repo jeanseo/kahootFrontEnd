@@ -11,6 +11,6 @@ const Findquizz = (props) => {
             </MDBCol>
         </div>
       );
-}
+};
 
 export default Findquizz;
