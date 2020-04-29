@@ -10,6 +10,7 @@ import CreateQuizForm from "./createQuizForm";
 import editProfile from "./editProfile";
 import {Navbar} from "react-bootstrap";
 import TopNavBar from "../molecules/topNavBar";
+import ListingQuizz from "../atoms/listingQuizz";
 
 
 class Main extends Component {
@@ -25,6 +26,7 @@ class Main extends Component {
                             <Route exact path="/" component={Home}/>
                             <Route path="/createquiz" component={CreateQuizForm}/>
                             <Route path="/profile" component={editProfile}/>
+                            <Route path="/listingquizz" component={ListingQuizz}/>     
                         </Switch>
 
                     </div>
