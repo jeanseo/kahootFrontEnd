@@ -22,7 +22,7 @@ const CreateQuizButton = () => {
     const [createQuiz] = useMutation(CREATE_QUIZ);
 
     return(
-        <Button variant="primary" onClick={(e) => {
+        <Button variant="success" onClick={(e) => {
             e.preventDefault();
             console.log("submit");
             createQuiz({variables: {name: "question" }})

@@ -47,10 +47,6 @@ const TopNavbar = () => {
         </Nav>
       </Collapse>
             <CreateQuizButton/>
-
-          <LinkContainer to="/quiz/123">
-              <Button color="success">Créer</Button>
-          </LinkContainer>
         </Navbar>
       </div>
   );
