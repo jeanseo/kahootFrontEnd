@@ -12,6 +12,7 @@ import {
 import './topNavBar.css'
 import {BrowserRouter as Router, Link} from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap'
+import CreateQuizButton, {createQuizButton} from '../atoms/CreateQuizButton';
 
 //essayer d'ajouter une icones dans la navbar (maison => homewhite.png)
 //import Image from 'react-bootstrap/Image'
@@ -39,8 +40,9 @@ const TopNavbar = () => {
             </LinkContainer>
         </Nav>
       </Collapse>
+            <CreateQuizButton/>
 
-          <LinkContainer to="/createquiz">
+          <LinkContainer to="/quiz/123">
               <Button color="success">Créer</Button>
           </LinkContainer>
         </Navbar>

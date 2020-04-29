@@ -8,8 +8,8 @@ import {
 import Home from "./Home";
 import CreateQuizForm from "../molecules/createQuizForm";
 import editProfile from "./editProfile";
-import {Navbar} from "react-bootstrap";
 import TopNavBar from "../molecules/topNavBar";
+import Quiz from "./Quiz";
 
 
 class Main extends Component {
@@ -25,6 +25,7 @@ class Main extends Component {
                             <Route exact path="/" component={Home}/>
                             <Route path="/createquiz" component={CreateQuizForm}/>
                             <Route path="/profile" component={editProfile}/>
+                            <Route path="/quiz/:id" component={Quiz}/>
                         </Switch>
 
                     </div>

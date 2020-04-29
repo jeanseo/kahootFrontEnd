@@ -33,7 +33,6 @@ const CreateQuizForm = () => {
     const [createQuiz] = useMutation(CREATE_QUIZ);
 
     return (
-
                 <Container>
                     <Row>
                         <Col>
