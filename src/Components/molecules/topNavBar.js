@@ -26,7 +26,7 @@ const TopNavbar = () => {
         <Navbar light expand="md">
 
         <NavbarBrand href="/">Kahoot !</NavbarBrand>
-      <NavbarToggler onClick={toggle} />
+      <NavbarToggler onClick={toggle}  />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
             <LinkContainer to="/"><NavItem>

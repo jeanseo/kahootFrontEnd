@@ -6,7 +6,7 @@ import {
     Link
 } from "react-router-dom";
 import Home from "./Home";
-import CreateQuizForm from "./createQuizForm";
+import CreateQuizForm from "../molecules/createQuizForm";
 import editProfile from "./editProfile";
 import {Navbar} from "react-bootstrap";
 import TopNavBar from "../molecules/topNavBar";
