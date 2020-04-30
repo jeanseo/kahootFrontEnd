@@ -12,7 +12,7 @@ import {
 import './topNavBar.css'
 import {BrowserRouter as Router, Link} from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap'
-import CreateQuizButton, {createQuizButton} from '../atoms/CreateQuizButton';
+import CreateQuizButton from '../atoms/CreateQuizButton';
 
 import user from '../../user.png';
 import listing from '../../listing.png';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Findquizz from './Components/atoms/search';
-import listingQuizz from './Components/atoms/listingQuizz';
+import listingQuizz from './Components/pages/QuizList';
 
 
 class App extends Component {

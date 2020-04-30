@@ -23,7 +23,7 @@ class Quiz extends Component {
             //Créer un nouveau quiz
             //récupérer son id
         }
-        //Récupérer le quizz correspondant
+        //Récupérer le quiz correspondant
 
         //Si pas trouvé de quiz, rediriger vers le listing des quizzes
 

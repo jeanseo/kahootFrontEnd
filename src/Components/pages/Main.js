@@ -10,7 +10,7 @@ import CreateQuizForm from "../molecules/createQuizForm";
 import editProfile from "./editProfile";
 import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
-import ListingQuizz from "../atoms/listingQuizz";
+import ListingQuizz from "./QuizList";
 
 
 class Main extends Component {
