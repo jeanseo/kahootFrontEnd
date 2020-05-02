@@ -1,7 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-const QuestionList = ({ questions }) => {
-
+const QuestionList = ({ChangeQuestion , questions }) => {
 
     if(questions.length===0)
         return <p>pas de questions</p>;
@@ -9,7 +9,8 @@ const QuestionList = ({ questions }) => {
         <ul>
             {
                 questions.map((questionItem, index) =>{
-                    return <li key={`qi_${questionItem._id}`}>{questionItem.question}</li>
+                    return <li key={`qi_${questionItem._id}`}
+                               onClick={()=>ChangeQuestion(index)}>{questionItem.question}</li>
                     }
                 )
             }

@@ -9,7 +9,14 @@ const CREATE_QUIZ = gql`
         mutation{
   quizCreateOne(record:{
     name: "nouveau quiz",
-    owner: "5ea0660a5257a64a008243e0"
+    owner: "5ea0660a5257a64a008243e0",
+    questions: [
+    {
+        question:"première question",
+        time: 20,
+        points: 1000
+        }
+    ]
   }) {
     recordId
   }

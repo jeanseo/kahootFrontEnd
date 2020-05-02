@@ -1,36 +1,55 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {
     Container,
     Row,
     Col, Form, Card, Button
 } from "react-bootstrap";
-import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 
-const CREATE_QUIZ = gql`
-        mutation{
-  quizCreateOne(record:{
-    name: "quiz videu"
-  }) {
-    recordId
-  }
-  
-}
-        `
-;
 
 
 
-const CreateQuizForm = () => {
-    const [question, setQuestion] = useState('');
-    const [timeLimit, setTimeLimit] = useState(20);
-    const [points, setPoints] = useState(1000);
+const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
     const [answer1, setAnswer1] = useState('');
     const [answer2, setAnswer2] = useState('');
     const [answer3, setAnswer3] = useState('');
     const [answer4, setAnswer4] = useState('');
 
-    const [createQuiz] = useMutation(CREATE_QUIZ);
+    const [question, setQuestion] = useState(
+        {
+            _id : questionToEdit._id,
+            question: questionToEdit.question,
+            time: questionToEdit.time,
+            points: questionToEdit.points}
+            );
+    console.log("avant");
+    console.log(questionToEdit);
+    console.log("après");
+    console.log(question);
+
+    const importQuestion = async () => {
+        await setQuestion({
+            _id : questionToEdit._id,
+            question: questionToEdit.question,
+            time: questionToEdit.time,
+            points: questionToEdit.points});
+        console.log("after");
+        console.log(question);
+
+    };
+
+    const saveChanges = () =>{
+        console.log('save changes')
+        saveQuestion(question);
+    };
+
+    //const [createQuiz] = useMutation(CREATE_QUIZ);
+
+
+    useEffect( () => {
+        importQuestion();
+
+    }, [questionToEdit]);
 
     return (
                 <Container>
@@ -41,23 +60,27 @@ const CreateQuizForm = () => {
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     console.log("submit");
-                                    createQuiz({variables: {name: question }})
 
                                 }}
                             >
                                 <Form.Row>
                                     <Col>
                                         <Form.Control plaintext type="text"
-                                                      value={question}
-                                                      onChange={e => setQuestion(e.target.value)}
+                                                      value={question.question || ''}
+                                                      onChange={e => setQuestion(
+                                                          {...question, question: e.target.value }
+                                                      )}
+                                                      onBlur={() => saveQuestion(question)}
                                                       placeholder="Ecrivez la question" />
                                     </Col>
                                 </Form.Row>
                                 <Form.Row>
                                     <Col>
                                         <Form.Label>Limite de temps</Form.Label>
-                                        <Form.Control as="select" value={timeLimit}
-                                                      onChange={e => setTimeLimit(e.target.value)}>
+                                        <Form.Control as="select" value={question.time || ''}
+                                                      onBlur={() => saveQuestion(question)}
+                                                      onChange={e => setQuestion(
+                                                          {...question, time: parseInt(e.target.value)})}>
                                             <option>5</option>
                                             <option>10</option>
                                             <option>20</option>
@@ -71,8 +94,10 @@ const CreateQuizForm = () => {
                                     <Col>
                                         <Form.Label>Points</Form.Label>
                                         <Form.Control as="select"
-                                                      value={points}
-                                                      onChange={e => setPoints(e.target.value)}>
+                                                      value={question.points || ''}
+                                                      onBlur={() => saveQuestion(question)}
+                                                      onChange={e => setQuestion(
+                                                          {...question, points: parseInt(e.target.value)})}>
                                             <option>0</option>
                                             <option>1000</option>
                                             <option>2000</option>
@@ -140,3 +165,32 @@ const CreateQuizForm = () => {
 };
 
 export default CreateQuizForm;
+
+/*
+
+{
+            question: null,
+            time: null,
+            points: null,
+            answer1:
+                {
+                    answer: null,
+                    correct: false
+                },
+            answer2:
+                {
+                    answer: null,
+                    correct: false
+                },
+            answer3:
+                {
+                    answer: null,
+                    correct: false
+                },
+            answer4:
+                {
+                    answer: null,
+                    correct: false
+                }
+            }
+ */
