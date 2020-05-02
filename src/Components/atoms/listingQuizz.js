@@ -1,11 +1,8 @@
-import React, { Component } from "react";
-import { ListGroup, ListGroupItem,
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React from "react";
+import { Card, CardText, CardTitle, Button } from 'reactstrap';
 import "./listingQuizz.css";
 import quizz from "../../quizz.png";
 import { LinkContainer } from 'react-router-bootstrap'
-import { Link } from "react-router-dom";
 
 const ListingQuizz0 = (props) => {
     return (
@@ -33,7 +30,7 @@ const ListingQuizz1 = (props) => {
                         <CardText class="text">Julien</CardText>
                     </div>
                     <div class="button">
-                        <LinkContainer to="/startgame">
+                        <LinkContainer to="/pingame">
                             <Button class="button">Jouer</Button>
                         </LinkContainer>
                         <LinkContainer to="/updatequizz">
@@ -60,7 +57,7 @@ const ListingQuizz1 = (props) => {
                         <CardText class="text">Jean Sebastien</CardText>
                     </div>
                     <div class="button">
-                        <LinkContainer to="/startgame">
+                        <LinkContainer to="/pingame">
                             <Button class="button">Jouer</Button>
                         </LinkContainer>
                         <LinkContainer to="/updatequizz">
@@ -87,7 +84,7 @@ const ListingQuizz1 = (props) => {
                         <CardText class="text"> description..</CardText>
                     </div>
                     <div class="button">
-                    <LinkContainer to="/startgame">
+                    <LinkContainer to="/pingame">
                         <Button class="button">Jouer</Button>
                     </LinkContainer>
                     <LinkContainer to="/updatequizz">

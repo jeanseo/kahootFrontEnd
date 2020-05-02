@@ -5,12 +5,10 @@ import {
     Navbar,
   NavbarBrand,
   Nav,
-  NavItem,
   NavLink,
   Button,
 } from 'reactstrap';
 import './topNavBar.css'
-import {BrowserRouter as Router, Link} from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap'
 import user from '../../user.png';
 import listing from '../../listing.png';

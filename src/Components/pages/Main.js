@@ -11,7 +11,8 @@ import editProfile from "./editProfile";
 import {Navbar} from "react-bootstrap";
 import TopNavBar from "../molecules/topNavBar";
 import ListingQuizz from "../atoms/listingQuizz";
-
+import startGame from "./startGame";
+import pinGame from "./pinGame";
 
 class Main extends Component {
     render() {
@@ -26,7 +27,9 @@ class Main extends Component {
                             <Route exact path="/" component={Home}/>
                             <Route path="/createquiz" component={CreateQuizForm}/>
                             <Route path="/profile" component={editProfile}/>
-                            <Route path="/listingquizz" component={ListingQuizz}/>     
+                            <Route path="/listingquizz" component={ListingQuizz}/>
+                            <Route path="/pingame" component={pinGame}/>  
+                            <Route path="/startgame" component={startGame}/> 
                         </Switch>
 
                     </div>
