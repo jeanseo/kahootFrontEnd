@@ -30,13 +30,15 @@ const TopNavbar = () => {
       <NavbarToggler onClick={toggle}  />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="mr-auto" navbar>
-            <LinkContainer to="/"><NavItem>
+            <LinkContainer to="/">
+            <NavLink>
                 Accueil
-            </NavItem></LinkContainer>
+            </NavLink>
+            </LinkContainer>
             <LinkContainer to="/profile">
-                <NavItem>
+                <NavLink>
                     Mon compte
-                </NavItem>
+                </NavLink>
             </LinkContainer>
         </Nav>
       </Collapse>
