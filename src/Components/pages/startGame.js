@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./startGame.css";
-import { Card, CardText, CardTitle, Button } from 'reactstrap';
-import { LinkContainer } from 'react-router-bootstrap'
 
 class startGame extends Component {
     render() {
@@ -13,11 +11,11 @@ class startGame extends Component {
                    </h1>                
                 </div>
                 <div class="pinresponse1">
-                    <p class="pintext"> 
-                        Réponse 1
-                    </p>
-                    <div class="pincouleur1">
-                    </div>
+                        <p class="pintext"> 
+                            Réponse 1
+                        </p>
+                        <div class="pincouleur1">
+                        </div>
                 </div>
                 <div class="pinresponse2">
                     <p class="pintext"> 

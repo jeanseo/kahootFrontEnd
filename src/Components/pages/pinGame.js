@@ -48,7 +48,7 @@ class pinGame extends Component {
                     </Row> 
                 </div>
                 <div class="start" >
-                    <LinkContainer to="/startgame">
+                    <LinkContainer to="/startgameteacher">
                         <Button color="success">
                             START
                         </Button>

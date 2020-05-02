@@ -1,0 +1,21 @@
+.q1titlecorrectanswer {
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.correct{
+    margin: auto;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.correctcolone {
+    margin-top: 50px;
+    text-align: center;
+    height: 373px;
+    background-color:green;
+}
