@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import {Button } from 'reactstrap';
-import "./pinGame.css";
-
+import {Button, Row, Col, Table } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import { Row, Col } from 'reactstrap';
-
-
+import "./pinGame.css";
+   
 class pinGame extends Component {
     render() {
         return (
@@ -13,7 +10,7 @@ class pinGame extends Component {
                 <div class="quizzname">
                         Quizz 1 : test
                 </div>
-                <div class="pin">
+                <div class="pinnumber">
                         <p class="pintext"> 
                             Code pin : 123456
                         </p>
@@ -22,41 +19,33 @@ class pinGame extends Component {
                     <h2>
                           Joueurs
                     </h2>
-                    <Row>
-                        <Col className="col">
-                            <Row class="row">
-                                Toto
-                            </Row>
-                            <Row>
-                                Titi
-                            </Row>
-                            <Row>
-                                Tata
-                            </Row>
-                        </Col>
-                        <Col>
-                            <Row>
-                                Toto
-                            </Row>
-                            <Row>
-                                Titi
-                            </Row>
-                            <Row>
-                                Tata
-                            </Row>
-                        </Col>
-                    </Row> 
-                </div>
-                <div class="start" >
-                    <LinkContainer to="/startgameteacher">
-                        <Button color="success">
-                            START
-                        </Button>
-                    </LinkContainer>
-                </div>
-              
+                <Table>
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Julien</td>
+                        <td>Jeanseb</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>Jaques</td>
+                        <td>Jean-Pierre</td>
+                    </tr>
+                </tbody>
+                </Table>
             </div>
-
+            <div class="start" >
+                <LinkContainer to="/startgameteacher">
+                    <Button color="success">
+                        START
+                    </Button>
+                </LinkContainer>
+            </div>    
+        </div>
         );
     }
 }

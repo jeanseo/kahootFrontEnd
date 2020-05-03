@@ -13,13 +13,26 @@
     margin-top: 50px;
     margin-bottom: 20px;
     background-color:#C8C8C8;
-    height: 150px;
+    height: 180px;
+    width: 500px;
+}
+
+.pinnumber {
+    border-style: groove;
+    border-color: #464646;
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    background-color:#C8C8C8;
+    height: 100px;
     width: 500px;
 }
 
 .pintext {
     margin: auto;
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .row {

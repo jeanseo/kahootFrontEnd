@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./startGame.css";
+import "./startGameTeacher.css";
 
 class startGame extends Component {
     render() {
@@ -11,28 +11,28 @@ class startGame extends Component {
                    </h1>                
                 </div>
                 <div class="pinresponse1">
-                        <p class="pintext"> 
+                        <p class="pintextreponse"> 
                             Réponse 1
                         </p>
                         <div class="pincouleur1">
                         </div>
                 </div>
                 <div class="pinresponse2">
-                    <p class="pintext"> 
+                    <p class="pintextreponse"> 
                         Réponse 2
                     </p>
                     <div class="pincouleur2">
                     </div>
                 </div>
                 <div class="pinresponse3">
-                    <p class="pintext"> 
+                    <p class="pintextreponse"> 
                         Réponse 3
                     </p>
                     <div class="pincouleur3">
                     </div>
                 </div>
                 <div class="pinresponse4">
-                    <p class="pintext"> 
+                    <p class="pintextreponse"> 
                         Réponse 4
                     </p>
                     <div class="pincouleur4">

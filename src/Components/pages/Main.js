@@ -10,11 +10,13 @@ import editProfile from "./editProfile";
 import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
 import ListingQuizz from "../atoms/listingQuizz";
-import startGame from "./startGame";
+import startGame from "./startGameTeacher";
 import pinGame from "./pinGame";
 import startGameUser from "./startGameUser";
 import correctAnswer from "./correctAnswer";
 import falseAnswer from "./falseAnswer";
+import joinPinGame from "./joinPinGame";
+import top5Players from "./top5Players";
 
 class Main extends Component {
     render() {
@@ -35,6 +37,8 @@ class Main extends Component {
                             <Route path="/q1falseanswer" component={falseAnswer}/>
                             <Route path="/quiz/:id" component={Quiz}/>
                             <Route path="/listingquizz" component={ListingQuizz}/>
+                            <Route path="/joinpingame" component={joinPinGame}/>
+                            <Route path="/top5players" component={top5Players}/>
                         </Switch>
                     </div>
                 </div>
