@@ -14,7 +14,13 @@ const CREATE_QUIZ = gql`
     {
         question:"première question",
         time: 20,
-        points: 1000
+        points: 1000,
+        answers: [
+            {active: false},
+            {active: false},
+            {active: false},
+            {active: false},
+        ]
         }
     ]
   }) {

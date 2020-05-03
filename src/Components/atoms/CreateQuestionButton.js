@@ -1,47 +1,20 @@
-import React, {Component} from "react";
-import { useHistory } from 'react-router-dom';
-import {useMutation} from '@apollo/react-hooks';
-import gql from "graphql-tag";
+import React, {Component, useContext} from "react";
 import {Button} from "react-bootstrap";
+import QuizContext from "../Provider/QuizContext";
+import {defaultQuestion} from "../pages/Quiz";
 
 
-const UPDATE_QUIZ = gql`
-    mutation(
-    $id : MongoID!,
-    $name: String!,
-    $questions: [QuizQuestionsInput],
-    
-  ){
-  quizUpdateById(record:{
-    _id : $id,
-    name: $name,
-    owner: "5ea0660a5257a64a008243e0",
-    questions: $questions
-  }) {
-    recordId
-  }
-  
-}
-`
-;
 
-const addQuestion = (quiz) => {
+const CreateQuestionButton = () => {
 
-};
-
-const CreateQuestionButton = ({quiz, setQuiz}) => {
-    const [createQuestion] = useMutation(UPDATE_QUIZ);
+    const {quiz, setQuiz} = useContext(QuizContext);
 
     return(
         <Button variant="success" onClick={(e) => {
-            createQuestion({variables: {id: quiz._id }})
-                .then((response)=>{
-                        console.log('ajout effectué');
-                    }
-                )
-                .catch((error)=>{
-                    console.log(error);
-                })
+            console.log("on ajoute une question");
+            let allQuestions = quiz.questions;
+            allQuestions.push(defaultQuestion);
+            setQuiz({...quiz, questions: allQuestions});
         }}>
             Ajouter une question
         </Button>

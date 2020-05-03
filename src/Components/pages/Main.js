@@ -11,7 +11,7 @@ import editProfile from "./editProfile";
 import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
 import ListingQuizz from "./QuizList";
-import QuizContextProvider from "../Provider/QuizContextProvider";
+import {QuizProvider} from "../Provider/QuizContext";
 
 
 class Main extends Component {
@@ -22,11 +22,10 @@ class Main extends Component {
 
     render() {
         return (
-            <QuizContextProvider>
             <Router>
                     <TopNavBar></TopNavBar>
                 <div>
-
+                    <QuizProvider >
                     <div className="content">
 
                         <Switch>
@@ -38,9 +37,9 @@ class Main extends Component {
                         </Switch>
 
                     </div>
+                    </QuizProvider>
                 </div>
             </Router>
-            </QuizContextProvider>
         );
     }
 }

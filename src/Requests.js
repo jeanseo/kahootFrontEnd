@@ -1,7 +1,8 @@
 const APIURL = "http://localhost:8080/api";
 
-export const editQuiz = async (data) => {
-    const response = await fetch(`${APIURL}/quizzes`, {
+export const updateQuiz = async (data) => {
+    console.log(data);
+    const response = await fetch(`${APIURL}/quizzes/${data._id}`, {
         method: "PUT",
         mode: "cors",
         cache: "no-cache",
@@ -10,6 +11,7 @@ export const editQuiz = async (data) => {
         },
         body: JSON.stringify(data)
     }).catch((err)=>console.log(err));
+    console.log('quiz updaté dans l\'api');
     return response;
 };
 

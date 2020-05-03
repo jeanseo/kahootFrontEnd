@@ -42,7 +42,7 @@ const QuizList = () => {
             return (
                 <div>
                     <div className="dashedbox">
-                        <div className="nbquizz">Vous n'avez aucun quizz</div>
+                        <div className="nbquizz">Vous n'avez aucun quiz</div>
                     </div>
                 </div>
             )

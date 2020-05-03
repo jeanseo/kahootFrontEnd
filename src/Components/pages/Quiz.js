@@ -1,12 +1,19 @@
 import React, {Component, useContext, useState} from "react";
-
-import gql from "graphql-tag";
-import {useMutation, useQuery} from "@apollo/react-hooks";
 import QuizEdit from "./QuizEdit";
-import QuizContext from "../Provider/QuizContext";
-import QuizContextProvider from "../Provider/QuizContextProvider";
+import QuizContext, {QuizProvider} from "../Provider/QuizContext";
 import {getQuiz} from "../../Requests";
 
+const defaultQuestion = {
+    question: "nouvelle question",
+    points: 1000,
+    time: 20,
+    answers: [
+        {active: false},
+        {active: false},
+        {active: false},
+        {active: false},
+    ]
+};
 
 class Quiz extends Component {
 
@@ -20,11 +27,13 @@ class Quiz extends Component {
     }
 
     componentDidMount() {
+        console.log(this.context)
         getQuiz(this.props.match.params.id)
             .then((data) => {
                 console.log('quiz chargé :\n'+JSON.stringify(data));
+                this.context.setQuiz(data);
                 this.setState({
-                    quiz : data,
+                    quiz: data,
                     loading: false
                 });
             });
@@ -33,16 +42,18 @@ class Quiz extends Component {
 
 render(){
     if(this.state.loading)
-        return(<h1>chargement</h1>);
+        return(<h1>Chargement...</h1>);
 
     return(
-        <QuizContext.Consumer>
-            <div><h3>toto</h3></div>
-        </QuizContext.Consumer>
+
+            <div>
+                <QuizEdit/>
+            </div>
 
     )
-
 }
     }
-
+Quiz.contextType = QuizContext;
 export default Quiz;
+
+export {defaultQuestion};

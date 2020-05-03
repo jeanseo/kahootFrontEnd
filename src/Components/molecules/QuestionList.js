@@ -9,7 +9,7 @@ const QuestionList = ({ChangeQuestion , questions }) => {
         <ul>
             {
                 questions.map((questionItem, index) =>{
-                    return <li key={`qi_${questionItem._id}`}
+                    return <li key={`qi_${index}`}
                                onClick={()=>ChangeQuestion(index)}>{questionItem.question}</li>
                     }
                 )

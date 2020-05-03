@@ -6,48 +6,47 @@ import {
 } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 
-
-
-
 const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
-    const [answer1, setAnswer1] = useState('');
-    const [answer2, setAnswer2] = useState('');
-    const [answer3, setAnswer3] = useState('');
-    const [answer4, setAnswer4] = useState('');
 
+    console.log(JSON.stringify(questionToEdit.answers));
     const [question, setQuestion] = useState(
         {
             _id : questionToEdit._id,
             question: questionToEdit.question,
             time: questionToEdit.time,
-            points: questionToEdit.points}
+            points: questionToEdit.points,
+            answers : questionToEdit.answers
+        }
             );
-    console.log("avant");
-    console.log(questionToEdit);
-    console.log("après");
-    console.log(question);
-
-    const importQuestion = async () => {
-        await setQuestion({
-            _id : questionToEdit._id,
-            question: questionToEdit.question,
-            time: questionToEdit.time,
-            points: questionToEdit.points});
-        console.log("after");
-        console.log(question);
-
-    };
 
     const saveChanges = () =>{
-        console.log('save changes')
+        console.log('save changes');
         saveQuestion(question);
     };
 
-    //const [createQuiz] = useMutation(CREATE_QUIZ);
+    const updateAnswerChanged = index => e => {
 
+        let newArr = question.answers;
+        if  (e.target.type === 'text')
+            newArr[index].answer = e.target.value;
+        if  (e.target.type === 'checkbox')
+            newArr[index].correct = e.target.checked;
+        //TODO A bouger dans le backend
+        if(newArr[index].answer !== null || newArr[index].answer !== '' )
+            newArr[index].active = true;
+        else
+            newArr[index].active = false;
+        setQuestion({...question, answers: newArr });
+    };
 
     useEffect( () => {
-        importQuestion();
+        setQuestion({
+            _id : questionToEdit._id,
+            question: questionToEdit.question,
+            time: questionToEdit.time,
+            points: questionToEdit.points,
+            answers: questionToEdit.answers
+        });
 
     }, [questionToEdit]);
 
@@ -55,7 +54,6 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                 <Container>
                     <Row>
                         <Col>
-                            <h1>Question 1</h1>
                             <Form
                                 onSubmit={(e) => {
                                     e.preventDefault();
@@ -107,13 +105,19 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                                 <Form.Row>
                                     <Col>
                                         <Card>
-                                            <Card.Header as="h5"></Card.Header>
+                                            <Card.Header as="h5"> </Card.Header>
                                             <Card.Title>
                                                 <Form.Control plaintext type="text" placeholder="Réponse 1"
-                                                              value={answer1}
-                                                              onChange={e => setAnswer1(e.target.value)}
+                                                              value={question.answers[0].answer || ''}
+                                                              onChange={updateAnswerChanged(0)}
                                                 />
                                             </Card.Title>
+                                                <Form.Group>
+                                                <Form.Check label="Bonne réponse"
+                                                            checked={question.answers[0].correct || false}
+                                                            onBlur={() => saveQuestion(question)}
+                                                            onChange={updateAnswerChanged(0)}/>
+                                                </Form.Group>
                                         </Card>
                                     </Col>
                                     <Col>
@@ -121,10 +125,17 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                                             <Card.Header as="h5"></Card.Header>
                                             <Card.Title>
                                                 <Form.Control plaintext type="text" placeholder="Réponse 2"
-                                                              value={answer2}
-                                                              onChange={e => setAnswer2(e.target.value)}
+                                                              value={question.answers[1].answer || ''}
+                                                              onBlur={() => saveQuestion(question)}
+                                                              onChange={updateAnswerChanged(1)}
                                                 />
                                             </Card.Title>
+                                            <Form.Group>
+                                                <Form.Check label="Bonne réponse"
+                                                            checked={question.answers[1].correct || false}
+                                                            onBlur={() => saveQuestion(question)}
+                                                            onChange={updateAnswerChanged(1)}/>
+                                            </Form.Group>
                                         </Card>
                                     </Col>
                                 </Form.Row>
@@ -134,10 +145,17 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                                             <Card.Header as="h5"></Card.Header>
                                             <Card.Title>
                                                 <Form.Control plaintext type="text" placeholder="Réponse 3"
-                                                              value={answer3}
-                                                              onChange={e => setAnswer3(e.target.value)}
+                                                              value={question.answers[2].answer || ''}
+                                                              onBlur={() => saveQuestion(question)}
+                                                              onChange={updateAnswerChanged(2)}
                                                 />
                                             </Card.Title>
+                                            <Form.Group>
+                                                <Form.Check label="Bonne réponse"
+                                                            checked={question.answers[2].correct || false}
+                                                            onBlur={() => saveQuestion(question)}
+                                                            onChange={updateAnswerChanged(2)}/>
+                                            </Form.Group>
                                         </Card>
                                     </Col>
                                     <Col>
@@ -145,10 +163,17 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                                             <Card.Header as="h5"></Card.Header>
                                             <Card.Title>
                                                 <Form.Control plaintext type="text" placeholder="Réponse 4"
-                                                              value={answer4}
-                                                              onChange={e => setAnswer4(e.target.value)}
+                                                              value={question.answers[3].answer || ''}
+                                                              onBlur={() => saveQuestion(question)}
+                                                              onChange={updateAnswerChanged(3)}
                                                 />
                                             </Card.Title>
+                                            <Form.Group>
+                                                <Form.Check label="Bonne réponse"
+                                                            checked={question.answers[3].correct || false}
+                                                            onBlur={() => saveQuestion(question)}
+                                                            onChange={updateAnswerChanged(3)}/>
+                                            </Form.Group>
                                         </Card>
                                     </Col>
                                 </Form.Row>
@@ -165,32 +190,3 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
 };
 
 export default CreateQuizForm;
-
-/*
-
-{
-            question: null,
-            time: null,
-            points: null,
-            answer1:
-                {
-                    answer: null,
-                    correct: false
-                },
-            answer2:
-                {
-                    answer: null,
-                    correct: false
-                },
-            answer3:
-                {
-                    answer: null,
-                    correct: false
-                },
-            answer4:
-                {
-                    answer: null,
-                    correct: false
-                }
-            }
- */
