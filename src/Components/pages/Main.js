@@ -32,7 +32,8 @@ class Main extends Component {
                             <Route path="/startgameuser" component={startGameUser}/>
                             <Route path="/q1correctanswer" component={correctAnswer}/>
                             <Route path="/q1falseanswer" component={falseAnswer}/>
-                        
+                            <Route path="/quiz/:id" component={Quiz}/>
+                            <Route path="/listingquizz" component={ListingQuizz}/>
                         </Switch>
                     </div>
                 </div>
