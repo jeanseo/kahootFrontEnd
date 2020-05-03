@@ -15,8 +15,14 @@ const QuizEdit = (props) => {
         let allQuestions = quiz.questions;
         allQuestions[selectedQuestion] = question;
         setQuiz({...quiz, questions: allQuestions});
-        console.log(JSON.stringify(quiz));
-        quiz.questions[selectedQuestion] = question;
+    };
+
+    const deleteQuestion = async (question) => {
+        if(selectedQuestion > 0)
+            setSelectedQuestion(selectedQuestion - 1);
+        let allQuestions = quiz.questions;
+        allQuestions.splice(selectedQuestion,1);
+        setQuiz({...quiz, questions: allQuestions});
     };
 
     const addQuestion = () => {
@@ -48,7 +54,12 @@ const QuizEdit = (props) => {
                 </Button>
             </div>
             <div>
-                <CreateQuizForm question={quiz.questions[selectedQuestion]} saveQuestion={saveQuestion}/>
+                {quiz.questions.length > 0
+                    ? <CreateQuizForm question={quiz.questions[selectedQuestion]}
+                                      saveQuestion={saveQuestion}
+                                      deleteQuestion = {deleteQuestion}/>
+                    : <h2>Pas de questions</h2>      }
+
             </div>
         </div>
     );

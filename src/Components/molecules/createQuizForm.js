@@ -6,9 +6,8 @@ import {
 } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 
-const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
+const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}) => {
 
-    console.log(JSON.stringify(questionToEdit.answers));
     const [question, setQuestion] = useState(
         {
             _id : questionToEdit._id,
@@ -179,6 +178,11 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion}) => {
                                 </Form.Row>
                                 <Button variant="primary" type="submit">
                                     Submit
+                                </Button>
+                                <Button variant="danger" type="delete"
+                                    onClick = {()=>deleteQuestion(question)}
+                                >
+                                    Delete
                                 </Button>
                             </Form>
 
