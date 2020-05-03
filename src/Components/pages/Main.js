@@ -11,11 +11,18 @@ import editProfile from "./editProfile";
 import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
 import ListingQuizz from "./QuizList";
+import QuizContextProvider from "../Provider/QuizContextProvider";
 
 
 class Main extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
+            <QuizContextProvider>
             <Router>
                     <TopNavBar></TopNavBar>
                 <div>
@@ -33,6 +40,7 @@ class Main extends Component {
                     </div>
                 </div>
             </Router>
+            </QuizContextProvider>
         );
     }
 }

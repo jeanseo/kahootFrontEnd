@@ -12,3 +12,12 @@ export const editQuiz = async (data) => {
     }).catch((err)=>console.log(err));
     return response;
 };
+
+export const getQuiz = async (id) => {
+    const response = await fetch(`${APIURL}/quizzes/${id}`, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+    }).catch((err)=>console.log(err));
+    return response.json();
+};

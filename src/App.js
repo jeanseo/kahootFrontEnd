@@ -6,6 +6,10 @@ import listingQuizz from './Components/pages/QuizList';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div class="body">
