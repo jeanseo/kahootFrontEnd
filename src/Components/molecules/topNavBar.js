@@ -10,6 +10,8 @@ import {
 } from 'reactstrap';
 import './topNavBar.css'
 import { LinkContainer } from 'react-router-bootstrap'
+import CreateQuizButton, {createQuizButton} from '../atoms/CreateQuizButton';
+
 import user from '../../user.png';
 import listing from '../../listing.png';
 //essayer d'ajouter une icones dans la navbar (maison => homewhite.png)
@@ -40,15 +42,11 @@ const TopNavbar = () => {
               listingquizz
               </NavLink>
             </LinkContainer>
-          </Nav>
-        </Collapse>
-        <LinkContainer to="/createquiz">
-          <Button color="success">
-            Créer
-          </Button>
-        </LinkContainer>
-      </Navbar>
-    </div>
+        </Nav>
+      </Collapse>
+            <CreateQuizButton/>
+        </Navbar>
+      </div>
   );
 };
 

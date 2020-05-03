@@ -5,9 +5,10 @@ import {
     Route,
 } from "react-router-dom";
 import Home from "./Home";
-import CreateQuizForm from "./createQuizForm";
+import CreateQuizForm from "../molecules/createQuizForm";
 import editProfile from "./editProfile";
 import TopNavBar from "../molecules/topNavBar";
+import Quiz from "./Quiz";
 import ListingQuizz from "../atoms/listingQuizz";
 import startGame from "./startGame";
 import pinGame from "./pinGame";
