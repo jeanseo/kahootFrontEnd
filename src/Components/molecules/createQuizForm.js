@@ -5,6 +5,7 @@ import {
     Col, Form, Card, Button
 } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
+import ConfirmModal from "../atoms/ConfirmModal";
 
 const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}) => {
 
@@ -17,6 +18,8 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
             answers : questionToEdit.answers
         }
             );
+
+    const [modalShow, setModalShow] = useState(false);
 
     const saveChanges = () =>{
         console.log('save changes');
@@ -180,7 +183,7 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                                     Submit
                                 </Button>
                                 <Button variant="danger" type="delete"
-                                    onClick = {()=>deleteQuestion(question)}
+                                    onClick = {()=>setModalShow(true)}
                                 >
                                     Delete
                                 </Button>
@@ -189,7 +192,19 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                         </Col>
                     </Row>
 
+                    <ConfirmModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        onConfirm={() => {
+                            setModalShow(false);
+                            deleteQuestion(question);
+                        }}
+                        headerText="Suppression"
+                        bodyText={"Êtes-vous sûr de supprimer cette question?"}
+                    />
+
                 </Container>
+
         );
 };
 
