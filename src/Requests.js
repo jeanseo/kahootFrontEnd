@@ -23,3 +23,13 @@ export const getQuiz = async (id) => {
     }).catch((err)=>console.log(err));
     return response.json();
 };
+
+export const deleteQuiz = async (id) => {
+    console.log(id);
+    const response = await fetch(`${APIURL}/quizzes/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        cache: "no-cache",
+    }).catch((err)=>console.log(err));
+    return response.json();
+};

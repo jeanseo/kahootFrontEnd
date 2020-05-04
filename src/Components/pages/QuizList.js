@@ -1,12 +1,16 @@
-import React, { Component } from "react";
+import React, {Component, useEffect, useState} from "react";
 import "./QuizList.css";
-import QuizItem  from "../molecules/QuizItem";
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
 
 import {Button, Card, CardText, CardTitle} from "reactstrap";
 import quizLogo from "../../quizz.png";
 import {LinkContainer} from "react-router-bootstrap";
+import {deleteQuiz} from "../../Requests";
+import QuizItem from "../molecules/QuizItem";
+import ConfirmModal from "../atoms/ConfirmModal";
+import {Container} from "react-bootstrap";
+import {useHistory} from "react-router-dom";
 
 
 const GET_QUIZ_LIST = gql`
@@ -24,6 +28,28 @@ const GET_QUIZ_LIST = gql`
 const QuizList = () => {
 
     const { data, loading, error } = useQuery(GET_QUIZ_LIST);
+    const [quizzes, setQuizzes] = useState([]);
+    const history = useHistory();
+
+    const deleteQuizItem = (id) => {
+        //Supression de la liste
+
+        deleteQuiz(id).then(() => {
+
+            let newList = quizzes;
+            const index = newList.findIndex(x => x._id === id);
+            newList.splice(index,1);
+            setQuizzes(newList);
+            history.push('/listingquizz')
+        });
+    };
+    useEffect(() => {console.log('reload??')},[quizzes]);
+
+    useEffect(() => {
+        if(loading === false && data){
+            setQuizzes(data.quizMany);
+        }
+    }, [loading, data]);
 
     if(loading){
         return(
@@ -36,8 +62,6 @@ const QuizList = () => {
         )
     }
     else {
-        const quizzes = data.quizMany;
-        console.log(data.quizMany);
         if(quizzes.length === 0){
             return (
                 <div>
@@ -50,11 +74,19 @@ const QuizList = () => {
         else{
             return (
                 <div>
+                <div>
                     {
-                       quizzes.map((quiz, index) => {
-                       return <QuizItem key={`qi_${quiz._id}`} quiz={quiz}/>
-                       })
+                        quizzes.map((quiz, index) => {
+                            return <QuizItem key={index}
+                                             quiz={quiz}
+                                             deleteQuizItem={deleteQuizItem}
+
+                            />
+                        })
                     }
+
+                </div>
+
                 </div>
             )
         }
@@ -62,4 +94,3 @@ const QuizList = () => {
 };
 
 export default QuizList;
-

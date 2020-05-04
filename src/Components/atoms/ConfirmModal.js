@@ -1,6 +1,5 @@
 import React, {Component, useContext} from "react";
 import {Button, Modal} from "react-bootstrap";
-import CreateQuestionButton from "./CreateQuestionButton";
 
 function ConfirmModal(props) {
     return (
