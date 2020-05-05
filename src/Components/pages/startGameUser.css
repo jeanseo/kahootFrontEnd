@@ -1,0 +1,33 @@
+.titreReponseQ1 {
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.divreponse{
+    margin: auto;
+    margin-top: 50px;
+}
+.userreponse1{
+    background-color: red;
+    height: 175px;
+}
+.userreponse2{
+    background-color: blue;
+    height: 175px;
+}
+
+.userreponse3{
+    background-color: yellow;
+    height: 175px;
+}
+
+.userreponse4{
+    background-color: green;
+    height: 175px;
+}
+
+.transparent {
+    height: 175px;
+    background-color: rgba(255, 105, 180, 0);
+}
