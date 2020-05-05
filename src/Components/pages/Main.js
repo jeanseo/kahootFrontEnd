@@ -14,6 +14,7 @@ import ListingQuizz from "./QuizList";
 import {QuizProvider} from "../Provider/QuizContext";
 import {GameProvider} from "../Provider/GameContext";
 import Game from "./Game";
+import Player from "./Player";
 
 
 class Main extends Component {
@@ -26,7 +27,7 @@ class Main extends Component {
         return (
             <Router>
                 <div>
-                    <TopNavBar></TopNavBar>
+                    <TopNavBar/>
                     <QuizProvider >
                         <GameProvider>
                             <div className="content">
@@ -36,6 +37,8 @@ class Main extends Component {
                                     <Route path="/quiz/:id" component={Quiz}/>
                                     <Route path="/listingquizz" component={ListingQuizz}/>
                                     <Route path={'/gameteacher/:id'} component={Game}/>
+                                    <Route exact path={'/join'} component={Player}/>
+                                    <Route path={'/join/:id'} component={Player}/>
                                 </Switch>
                             </div>
                         </GameProvider>

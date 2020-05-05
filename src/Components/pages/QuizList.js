@@ -55,8 +55,6 @@ const QuizList = () => {
     if(loading){
         return(
             <div>
-
-
             <div>loading</div>
             </div>
         )

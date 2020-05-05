@@ -3,7 +3,7 @@ import QuizContext from "../Provider/QuizContext";
 import GameContext from "../Provider/GameContext";
 import {getGameRequest, getQuiz} from "../../Requests";
 import Quiz from "./Quiz";
-import PinGame from "./PinGame";
+import PinGame from "../molecules/PinGame";
 
 class Game extends Component {
 
@@ -16,17 +16,12 @@ class Game extends Component {
     }
 
     componentDidMount() {
-
         getGameRequest(this.props.match.params.id)
             .then((fetchedGame)=>{
                 this.context.setGame(fetchedGame);
                 this.setState({loading: false});
                 console.log(fetchedGame)
             });
-
-
-
-
     }
 
 

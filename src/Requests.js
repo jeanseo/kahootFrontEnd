@@ -45,6 +45,21 @@ export const getGameRequest = async (id) => {
     return response.json();
 };
 
+export const joinGameRequest = async (data) => {
+    const response = await fetch(`${APIURL}/games/join`, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).catch((err)=>console.log(err));
+    return response.json();
+
+
+};
+
 export const createGameRequest = async (id) => {
 
     const response = await fetch(`${APIURL}/games/${id}`, {
