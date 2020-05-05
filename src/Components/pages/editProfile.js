@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TopNavBar from "../molecules/topNavBar";
 
 class editProfile extends Component {
     render() {

@@ -36,6 +36,15 @@ export const deleteQuiz = async (id) => {
     return response.json();
 };
 
+export const getGameRequest = async (id) => {
+    const response = await fetch(`${APIURL}/games/${id}`, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+    }).catch((err)=>console.log(err));
+    return response.json();
+};
+
 export const createGameRequest = async (id) => {
 
     const response = await fetch(`${APIURL}/games/${id}`, {

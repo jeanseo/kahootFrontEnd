@@ -13,6 +13,7 @@ import {Container} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import QuizContext from "../Provider/QuizContext";
 import GameContext from "../Provider/GameContext";
+import TopNavBar from "../molecules/topNavBar";
 
 const GET_QUIZ_LIST = gql`
 {
@@ -53,12 +54,19 @@ const QuizList = () => {
 
     if(loading){
         return(
-        <div>loading</div>
+            <div>
+
+
+            <div>loading</div>
+            </div>
         )
     }
     else if (error){
         return(
+            <div>
+
             <div>error</div>
+            </div>
         )
     }
     else {

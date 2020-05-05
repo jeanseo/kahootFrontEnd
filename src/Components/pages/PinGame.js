@@ -1,18 +1,22 @@
-import React, { Component } from "react";
+import React, {Component, useContext} from "react";
 import {Button, Row, Col, Table } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap'
-import "./pinGame.css";
+import "./PinGame.css";
+import GameContext from "../Provider/GameContext";
    
-class pinGame extends Component {
-    render() {
-        return (
+const PinGame = (props) => {
+
+    const {game, setGame} = useContext(GameContext);
+
+
+        return (<div>
             <div class="all">
                 <div class="quizzname">
-                        Quizz 1 : test
+                        {JSON.stringify(game)}
                 </div>
                 <div class="pinnumber">
                         <p class="pintext"> 
-                            Code pin : 123456
+                            Code pin : {game.pin}
                         </p>
                 </div>
                 <div class="pin">
@@ -46,8 +50,9 @@ class pinGame extends Component {
                 </LinkContainer>
             </div>    
         </div>
+            </div>
         );
-    }
+
 }
 
-export default pinGame;
+export default PinGame;

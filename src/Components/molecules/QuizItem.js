@@ -20,7 +20,8 @@ const QuizItem = (props) => {
                             onClick={async ()=>{
                                 createGame(props.quiz._id).then((createdGame)=>{
                                     console.log(createdGame);
-                                    window.open(`/gameteacher/${createdGame._id}`, "_blank");
+                                    history.push(`/gameteacher/${createdGame._id}`);
+                                    //window.open(`/gameteacher/${createdGame._id}`, "_blank");
                                 });
                             }}
                     >Start Game</Button>

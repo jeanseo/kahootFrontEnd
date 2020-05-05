@@ -13,6 +13,7 @@ import Quiz from "./Quiz";
 import ListingQuizz from "./QuizList";
 import {QuizProvider} from "../Provider/QuizContext";
 import {GameProvider} from "../Provider/GameContext";
+import Game from "./Game";
 
 
 class Main extends Component {
@@ -24,17 +25,17 @@ class Main extends Component {
     render() {
         return (
             <Router>
-                    <TopNavBar></TopNavBar>
                 <div>
+                    <TopNavBar></TopNavBar>
                     <QuizProvider >
                         <GameProvider>
                             <div className="content">
                                 <Switch>
                                     <Route exact path="/" component={Home}/>
-                                    <Route path="/createquiz" component={CreateQuizForm}/>
                                     <Route path="/profile" component={editProfile}/>
                                     <Route path="/quiz/:id" component={Quiz}/>
                                     <Route path="/listingquizz" component={ListingQuizz}/>
+                                    <Route path={'/gameteacher/:id'} component={Game}/>
                                 </Switch>
                             </div>
                         </GameProvider>
