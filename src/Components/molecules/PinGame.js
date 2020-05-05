@@ -4,11 +4,35 @@ import { LinkContainer } from 'react-router-bootstrap'
 import "./PinGame.css";
 import GameContext from "../Provider/GameContext";
 import QuizItem from "./QuizItem";
-import GamePlayerWaitingRoom from "../atoms/GamePlayersWaitingList";
-   
+import GamePlayerWaitingList from "../atoms/GamePlayersWaitingList";
+import socketIOClient from "socket.io-client";
+
+const ENDPOINT = "http://localhost:8080";
+const socket = socketIOClient(`${ENDPOINT}/games`);
+
+function subscribeToIncomingPlayer(cb) {
+    socket.on('newplayer', player => {
+        console.log('newplayer');
+        cb(null, player)});
+}
+
+
 const PinGame = (props) => {
 
     const {game, setGame} = useContext(GameContext);
+
+    socket.emit('manageGame', {game: game._id});
+
+    subscribeToIncomingPlayer((err, incomingPlayer) => {
+        console.log('on recupere un nvx joueur: '+ incomingPlayer.name);
+        if(game.players){
+            console.log(`on l'ajoute à la liste qui contient ${game.players.length} noms`);
+            console.log(incomingPlayer);
+            let newList = game.players;
+            newList.push(incomingPlayer);
+            setGame({...game, players : newList});
+        }
+    });
 
 
         return (<div>
@@ -27,8 +51,8 @@ const PinGame = (props) => {
                     </h2>
                     {
                         game.players.map((player, index) => {
-                            return <GamePlayerWaitingRoom key={index}
-                                             player={player}
+                            return <GamePlayerWaitingList key={index}
+                                                          player={player}
                             />
                         })
                     }

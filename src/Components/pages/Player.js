@@ -1,50 +1,35 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import JoinPinGame from "../molecules/JoinPinGame";
 import GameContext from "../Provider/GameContext";
 import Container from "react-bootstrap/Container";
 import {Badge, Row} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
-import GamePlayerWaitingRoom from "../atoms/GamePlayersWaitingList";
+import GameWaitingRoom from "../molecules/GameWaitingRoom";
+
+
+
 
 const Player = (props) => {
-    const {game} = useContext(GameContext);
+    const {game, setGame} = useContext(GameContext);
     const [player, setPlayer] = useState({});
 
     if(player.id&& game._id){
-        console.log(game);
+        console.log(player.id, game._id);
+
+
+
         return(
-            <Container>
-                <header>
-                    <h3>Bienvenue {player.name}</h3>
-                    <h2>{game.name}</h2>
-                </header>
-            <Row>
-                <Col>
-                    En attente de joueurs...
-                </Col>
-            </Row>
-                <Row>
-                    <Col>
-                        {
-                            game.players.map((player, index) => {
-                                return (
-                                    <Badge key={index}>
-                                        {player.name}
-                                    </Badge>
-                                )
-                            })
-                        }
-                    </Col>
-                </Row>
-            </Container>
+            <GameWaitingRoom player = {player}/>
         );
     }
 
 
 
     return(
-        <JoinPinGame pin={props.match.params.id} setPlayer={setPlayer}/>
-    )
+        <div>
+            <JoinPinGame pin={props.match.params.id} setPlayer={setPlayer}/>
+        </div>
+        )
 
 };
 

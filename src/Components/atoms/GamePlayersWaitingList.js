@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Card from "react-bootstrap/Card";
 
-const GamePlayerWaitingRoom = ({player}) => {
+const GamePlayerWaitingList = ({player}) => {
 
     return(
             <Card>
@@ -10,5 +10,5 @@ const GamePlayerWaitingRoom = ({player}) => {
         )
 };
 
-export default GamePlayerWaitingRoom
+export default GamePlayerWaitingList
 
