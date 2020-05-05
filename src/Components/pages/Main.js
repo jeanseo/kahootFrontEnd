@@ -12,6 +12,7 @@ import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
 import ListingQuizz from "./QuizList";
 import {QuizProvider} from "../Provider/QuizContext";
+import {GameProvider} from "../Provider/GameContext";
 
 
 class Main extends Component {
@@ -26,17 +27,17 @@ class Main extends Component {
                     <TopNavBar></TopNavBar>
                 <div>
                     <QuizProvider >
-                    <div className="content">
-
-                        <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route path="/createquiz" component={CreateQuizForm}/>
-                            <Route path="/profile" component={editProfile}/>
-                            <Route path="/quiz/:id" component={Quiz}/>
-                            <Route path="/listingquizz" component={ListingQuizz}/>
-                        </Switch>
-
-                    </div>
+                        <GameProvider>
+                            <div className="content">
+                                <Switch>
+                                    <Route exact path="/" component={Home}/>
+                                    <Route path="/createquiz" component={CreateQuizForm}/>
+                                    <Route path="/profile" component={editProfile}/>
+                                    <Route path="/quiz/:id" component={Quiz}/>
+                                    <Route path="/listingquizz" component={ListingQuizz}/>
+                                </Switch>
+                            </div>
+                        </GameProvider>
                     </QuizProvider>
                 </div>
             </Router>

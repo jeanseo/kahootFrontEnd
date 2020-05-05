@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component, useContext, useEffect, useState} from "react";
 import "./QuizList.css";
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
@@ -11,7 +11,8 @@ import QuizItem from "../molecules/QuizItem";
 import ConfirmModal from "../atoms/ConfirmModal";
 import {Container} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
-
+import QuizContext from "../Provider/QuizContext";
+import GameContext from "../Provider/GameContext";
 
 const GET_QUIZ_LIST = gql`
 {
@@ -35,12 +36,11 @@ const QuizList = () => {
         //Supression de la liste
 
         deleteQuiz(id).then(() => {
-
             let newList = quizzes;
             const index = newList.findIndex(x => x._id === id);
             newList.splice(index,1);
             setQuizzes(newList);
-            history.push('/listingquizz')
+            history.push('/listingquizz');
         });
     };
     useEffect(() => {console.log('reload??')},[quizzes]);
