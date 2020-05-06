@@ -1,3 +1,5 @@
+import {responsePathAsArray} from "graphql";
+
 const APIURL = "http://localhost:8080/api";
 
 export const updateQuiz = async (data) => {
@@ -31,5 +33,39 @@ export const deleteQuiz = async (id) => {
         mode: "cors",
         cache: "no-cache",
     }).catch((err)=>console.log(err));
+    return response.json();
+};
+
+export const getGameRequest = async (id) => {
+    const response = await fetch(`${APIURL}/games/${id}`, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache",
+    }).catch((err)=>console.log(err));
+    return response.json();
+};
+
+export const joinGameRequest = async (data) => {
+    const response = await fetch(`${APIURL}/games/join`, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).catch((err)=>console.log(err));
+    return response.json();
+
+
+};
+
+export const createGameRequest = async (id) => {
+
+    const response = await fetch(`${APIURL}/games/${id}`, {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+    }).catch((err)=>{console.log(err) });
     return response.json();
 };

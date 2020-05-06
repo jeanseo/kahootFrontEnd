@@ -12,6 +12,10 @@ import TopNavBar from "../molecules/topNavBar";
 import Quiz from "./Quiz";
 import ListingQuizz from "./QuizList";
 import {QuizProvider} from "../Provider/QuizContext";
+import {GameProvider} from "../Provider/GameContext";
+import Game from "./Game";
+import Player from "./Player";
+import PlayGameStudent from "./PlayGameStudent";
 
 
 class Main extends Component {
@@ -23,20 +27,23 @@ class Main extends Component {
     render() {
         return (
             <Router>
-                    <TopNavBar></TopNavBar>
                 <div>
+                    <TopNavBar/>
                     <QuizProvider >
-                    <div className="content">
-
-                        <Switch>
-                            <Route exact path="/" component={Home}/>
-                            <Route path="/createquiz" component={CreateQuizForm}/>
-                            <Route path="/profile" component={editProfile}/>
-                            <Route path="/quiz/:id" component={Quiz}/>
-                            <Route path="/listingquizz" component={ListingQuizz}/>
-                        </Switch>
-
-                    </div>
+                        <GameProvider>
+                            <div className="content">
+                                <Switch>
+                                    <Route exact path="/" component={Home}/>
+                                    <Route path="/profile" component={editProfile}/>
+                                    <Route path="/quiz/:id" component={Quiz}/>
+                                    <Route path="/listingquizz" component={ListingQuizz}/>
+                                    <Route path={'/gameteacher/:id'} component={Game}/>
+                                    <Route exact path={'/join'} component={Player}/>
+                                    <Route path={'/join/:id'} component={Player}/>
+                                    //<Route path={'/play/:id'} component={PlayGameStudent}/>
+                                </Switch>
+                            </div>
+                        </GameProvider>
                     </QuizProvider>
                 </div>
             </Router>

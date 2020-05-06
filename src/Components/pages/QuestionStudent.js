@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import "./startGameUser.css";
+import "./QuestionStudent.css";
 import { Container, Row, Col } from 'reactstrap';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link, NavLink } from "react-router-dom";
 
-class startGameUser extends Component {
+class QuestionStudent extends Component {
     render() {
         return(
             <div>
                 <div class="titreReponseQ1">
                     <h1>
-                        Qui est le plus beau ?
+                        Quelle est la réponse ?
                     </h1>
                     
                 </div>
@@ -73,4 +73,4 @@ class startGameUser extends Component {
             }
         }
 
-        export default startGameUser;
+        export default QuestionStudent;

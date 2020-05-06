@@ -2,6 +2,7 @@ import React, {Component, useContext, useState} from "react";
 import QuizEdit from "./QuizEdit";
 import QuizContext, {QuizProvider} from "../Provider/QuizContext";
 import {getQuiz} from "../../Requests";
+import TopNavBar from "../molecules/topNavBar";
 
 const defaultQuestion = {
     question: "nouvelle question",
