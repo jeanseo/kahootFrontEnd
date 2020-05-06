@@ -16,8 +16,6 @@ const QuestionList = ({ChangeQuestion , questions }) => {
             }
         </ul>
     );
-
-
 };
 
 export default QuestionList

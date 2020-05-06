@@ -1,10 +1,12 @@
-import React, {Component, useState, useContext, useEffect} from "react";
+import React, {Component, useState, useContext} from "react";
 import {Button, Form} from "react-bootstrap";
 import QuestionList from "../molecules/QuestionList";
 import CreateQuizForm from "../molecules/createQuizForm";
 import CreateQuestionButton from "../atoms/CreateQuestionButton";
 import QuizContext from "../Provider/QuizContext";
 import {defaultQuestion} from "./Quiz";
+import "./QuizEdit.css";
+import {FormGroup, Input } from 'reactstrap';
 
 const QuizEdit = (props) => {
 
@@ -34,24 +36,32 @@ const QuizEdit = (props) => {
     };
 
     return(
-        <div>
-            <form>
-                <Form.Control plaintext type="text"
-                              value={quiz.name || 'Nouveau Quiz'}
-                              onChange={e => setQuiz(
-                                  {...quiz, name: e.target.value })}
-                              onBlur={() => console.log('sauvegarde à lancer')}
-                              placeholder="Ecrivez la question" />
-            </form>
             <div>
-                <ul>
-                    <QuestionList ChangeQuestion = {(questionId) => {
-                        setSelectedQuestion(questionId);
-                    }} questions={quiz.questions}/>
-                </ul>
-                <Button variant="success" onClick={() => addQuestion()}>
-                    Ajouter une question
-                </Button>
+                <div class="questiontitle">
+                    <Form>
+                        <FormGroup>                          
+                            <Input plaintext type="text" value={quiz.name || 'Nouveau Quiz'} onChange={e => setQuiz(
+                                                    {...quiz, name: e.target.value })}
+                                                onBlur={() => console.log('sauvegarde à lancer')}
+                                                placeholder="Ecrivez la question"
+                                                style={{fontSize: 40,textAlign:"center"}}
+                            />
+                        </FormGroup>
+                    </Form>
+                </div>
+            <div class="leftmenu">
+                <div class="ulliquestion">         
+                    <ul>
+                        <QuestionList ChangeQuestion = {(questionId) => {
+                            setSelectedQuestion(questionId);
+                        }} questions={quiz.questions}/>
+                    </ul>
+                </div>
+                <div class="buttonaddquestion">
+                        <Button variant="success" onClick={() => addQuestion()}>
+                        +
+                        </Button>
+                </div>
             </div>
             <div>
                 {quiz.questions.length > 0
@@ -59,7 +69,6 @@ const QuizEdit = (props) => {
                                       saveQuestion={saveQuestion}
                                       deleteQuestion = {deleteQuestion}/>
                     : <h2>Pas de questions</h2>      }
-
             </div>
         </div>
     );
