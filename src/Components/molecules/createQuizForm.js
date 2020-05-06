@@ -7,6 +7,7 @@ import {
 import { useMutation } from "@apollo/react-hooks";
 import ConfirmModal from "../atoms/ConfirmModal";
 import {FormGroup, Input } from 'reactstrap';
+import '../pages/QuizEdit.css'
 
 const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}) => {
 
@@ -121,14 +122,12 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                                                 />
                                             </Card.Title>
                                                 <Form.Group>
-                                                    <div class="pincouleur1">
-                                                        <div class="othercontent1">
+
                                                             <Form.Check label="Bonne réponse"
                                                                     checked={question.answers[0].correct || false}
                                                                     onBlur={() => saveQuestion(question)}
                                                                     onChange={updateAnswerChanged(0)}/>
-                                                        </div>
-                                                    </div> 
+
                                                 </Form.Group>
                                         </Card>
                                     </Col>
@@ -143,14 +142,12 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                                                 />
                                             </Card.Title>
                                             <Form.Group>
-                                            <div class="pincouleur2">
-                                                <div class="othercontent2">
+
                                                     <Form.Check label="Bonne réponse"
                                                                 checked={question.answers[1].correct || false}
                                                                 onBlur={() => saveQuestion(question)}
                                                                 onChange={updateAnswerChanged(1)}/>
-                                                </div>
-                                            </div>
+
                                             </Form.Group>
                                         </Card>
                                     </Col>
@@ -167,14 +164,11 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                                                 />
                                             </Card.Title>
                                             <Form.Group>
-                                                <div class="pincouleur3">
-                                                    <div class="othercontent3">
+
                                                         <Form.Check label="Bonne réponse"
                                                                     checked={question.answers[2].correct || false}
                                                                     onBlur={() => saveQuestion(question)}
                                                                     onChange={updateAnswerChanged(2)}/>
-                                                    </div>
-                                                </div>
                                             </Form.Group>
                                         </Card>
                                     </Col>
@@ -190,14 +184,12 @@ const CreateQuizForm = ({question: questionToEdit, saveQuestion, deleteQuestion}
                                                 </Card.Title>
                                                 <div>
                                                         <Form.Group>
-                                                        <div class="pincouleur4">
-                                                            <div class="othercontent4">
+
                                                                 <Form.Check label="Bonne réponse"
                                                                                 checked={question.answers[3].correct || false}
                                                                                 onBlur={() => saveQuestion(question)}
                                                                                 onChange={updateAnswerChanged(3)}/>
-                                                            </div>
-                                                        </div>
+
                                                         </Form.Group>
                                                 </div>
                                             </Card>

@@ -13,8 +13,7 @@ const QuizItem = (props) => {
 
     return (
         <Card>
-            <Card.Body>{props.quiz.name}
-                {props.quiz._id}</Card.Body>
+            <Card.Body>{props.quiz.name}</Card.Body>
             <Card.Footer><ButtonGroup>
                     <Button variant={"success"}
                             onClick={async ()=>{
@@ -28,7 +27,9 @@ const QuizItem = (props) => {
                 <LinkContainer to={`/quiz/${props.quiz._id}`}>
                     <Button>Edit</Button>
                 </LinkContainer>
-                <Button variant={"danger"}>Delete</Button></ButtonGroup></Card.Footer>
+                <Button variant={"danger"}
+                    onClick={()=>props.deleteQuizItem(props.quiz._id)}
+                >Delete</Button></ButtonGroup></Card.Footer>
         </Card>
     )
 };
