@@ -15,6 +15,7 @@ import {QuizProvider} from "../Provider/QuizContext";
 import {GameProvider} from "../Provider/GameContext";
 import Game from "./Game";
 import Player from "./Player";
+import PlayGameStudent from "./PlayGameStudent";
 
 
 class Main extends Component {
@@ -39,6 +40,7 @@ class Main extends Component {
                                     <Route path={'/gameteacher/:id'} component={Game}/>
                                     <Route exact path={'/join'} component={Player}/>
                                     <Route path={'/join/:id'} component={Player}/>
+                                    //<Route path={'/play/:id'} component={PlayGameStudent}/>
                                 </Switch>
                             </div>
                         </GameProvider>

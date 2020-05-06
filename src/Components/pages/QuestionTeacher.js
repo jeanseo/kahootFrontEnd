@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./startGameTeacher.css";
+import "./QuestionTeacher.css";
 
-class startGame extends Component {
+class QuestionTeacher extends Component {
     render() {
         return(
             <div>
                 <div class="titleQ1">
                    <h1>
-                        Question 1 : Qui est le plus beau ?
+                        1 : Quelle est la réponse ?
                    </h1>                
                 </div>
                 <div class="pinresponse1">
@@ -43,4 +43,4 @@ class startGame extends Component {
     }
 }
 
-export default startGame;
+export default QuestionTeacher;

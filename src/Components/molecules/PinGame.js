@@ -21,6 +21,13 @@ const PinGame = (props) => {
 
     const {game, setGame} = useContext(GameContext);
 
+    const startGame = () => {
+        console.log("La partie démarre: "+game._id);
+        socket.emit('startGame', {id: game._id});
+        setGame({...game, status: "started"})
+
+    };
+
     socket.emit('manageGame', {game: game._id});
 
     subscribeToIncomingPlayer((err, incomingPlayer) => {
@@ -56,20 +63,18 @@ const PinGame = (props) => {
                             />
                         })
                     }
-            </div>
-            <div className="start" >
                     <Button disabled={game.players.length === 0} color="success"
-                    onClick={()=>
-                        alert('demarrer le jeu')
-                        //Faire le call api pour démarrer une partie
-                    }>
+                            onClick={()=>startGame()}>
                         START
                     </Button>
+            </div>
+            <div className="start" >
+
             </div>    
         </div>
             </div>
         );
 
-}
+};
 
 export default PinGame;

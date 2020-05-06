@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import {Badge, Row} from "react-bootstrap";
 import Col from "react-bootstrap/Col";
 import GameWaitingRoom from "../molecules/GameWaitingRoom";
+import PlayGameStudent from "./PlayGameStudent";
 
 
 
@@ -12,22 +13,28 @@ import GameWaitingRoom from "../molecules/GameWaitingRoom";
 const Player = (props) => {
     const {game, setGame} = useContext(GameContext);
     const [player, setPlayer] = useState({});
+    const [startGame, setStartGame] = useState(false);
 
+    //Affichage du déroulement des questions
+    if(startGame){
+        console.log('start Game');
+        return(<div><PlayGameStudent/></div>)
+    }
+
+    //Affichage de l'attente de début de partie
     if(player.id&& game._id){
         console.log(player.id, game._id);
 
-
-
         return(
-            <GameWaitingRoom player = {player}/>
+            <GameWaitingRoom player = {player} setStartGame={setStartGame}/>
         );
     }
 
 
-
+//Affichage du formulaire d'inscription
     return(
         <div>
-            <JoinPinGame pin={props.match.params.id} setPlayer={setPlayer}/>
+            <JoinPinGame pin={props.match.params.id} setPlayer={setPlayer} />
         </div>
         )
 

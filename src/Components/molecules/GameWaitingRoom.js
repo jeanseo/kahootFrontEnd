@@ -14,6 +14,11 @@ function subscribeToMessage(cb) {
         cb(null, message)});
 }
 
+function subscribeToStartGame(cb) {
+    socket.on('gameStarted', game => {
+        cb(null, game)});
+}
+
 function subscribeToIncomingPlayer(cb) {
     socket.on('newplayer', player => {
         cb(null, player)});
@@ -24,12 +29,13 @@ class GameWaitingRoom extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message : ''
+            message : '',
 
         };
         subscribeToMessage((err, message) => {
             this.setState({message : message});
         });
+
 
     }
 
@@ -50,14 +56,26 @@ class GameWaitingRoom extends Component {
                 this.context.setGame({...this.context.game, players : newList})
             }
         });
+
+        //On s'abonne à l'indication de début de partie
+        subscribeToStartGame((err, updatedGame) => {
+            console.log('la partie démarre');
+            this.context.setGame(updatedGame);
+            this.props.setStartGame(true);
+        });
     }
 
 
     render(){
         return(<div>
             <Container>
-                <h3>Bienvenue {this.props.player.name}</h3>
-                <h2>{this.context.game.name}</h2>
+                <Row>
+                    <Col>
+                        <h3>Bienvenue {this.props.player.name}</h3>
+                        <h2>{this.context.game.name}</h2>
+                    </Col>
+                </Row>
+
                 <Row>
                     <Col>
                         En attente de joueurs...

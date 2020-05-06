@@ -4,6 +4,7 @@ import GameContext from "../Provider/GameContext";
 import {getGameRequest, getQuiz} from "../../Requests";
 import Quiz from "./Quiz";
 import PinGame from "../molecules/PinGame";
+import QuestionTeacher from "./QuestionTeacher";
 
 class Game extends Component {
 
@@ -34,6 +35,13 @@ class Game extends Component {
             return(
                 <div>
                     <PinGame/>
+                </div>)
+        }
+
+        if(this.context.game.status === "started"){
+            return(
+                <div>
+                    <QuestionTeacher/>
                 </div>)
         }
 
